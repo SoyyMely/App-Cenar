@@ -11,6 +11,7 @@ require('dotenv').config({
 const conectarDB = require('./config/db');
 
 const app = express();
+app.set('trust proxy', 1);
 
 // Conexión a la base de datos
 conectarDB();
@@ -56,7 +57,6 @@ app.use('/comercio', require('./routes/comercioRoutes'));
 app.use('/delivery', require('./routes/deliveryRoutes'));
 app.use('/admin', require('./routes/adminRoutes'));
 
-app.get('/', (req, res) => res.redirect('/login'));
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
