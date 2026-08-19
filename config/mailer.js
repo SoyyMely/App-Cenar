@@ -10,7 +10,8 @@ const transporter = nodemailer.createTransport(
         // Configuración SMTP genérica (Ethereal, Mailtrap, etc.)
         host: process.env.EMAIL_HOST,
         port: Number(process.env.EMAIL_PORT) || 587,
-        secure: Number(process.env.EMAIL_PORT) === 465, // true solo si usas puerto 465
+        secure: Number(process.env.EMAIL_PORT) === 465, 
+        family: 4, 
         auth: {
           user: process.env.EMAIL_USER,
           pass: process.env.EMAIL_PASS
@@ -18,7 +19,10 @@ const transporter = nodemailer.createTransport(
       }
     : {
         // Configuración para Gmail
-        service: 'gmail',
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        family: 4,
         auth: {
           user: process.env.EMAIL_USER,
           pass: process.env.EMAIL_PASS 
@@ -56,7 +60,7 @@ const enviarCorreo = async ({ to, subject, html, text, attachments }) => {
 
     console.log(`📧 Correo enviado a ${to} — ID: ${info.messageId}`);
 
-    // Si es Ethereal , muestra el link de vista previa
+    // Si es Ethereal, muestra el link de vista previa
     const previewUrl = nodemailer.getTestMessageUrl(info);
     if (previewUrl) {
       console.log('👀 Vista previa del correo:', previewUrl);
