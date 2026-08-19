@@ -14,7 +14,7 @@ const enviarCorreo = async ({ to, subject, html, text, attachments }) => {
 
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Cenar <onboarding@resend.dev>',
+      from: 'Cenar <no-reply@appcenar.me>',
       to,
       subject,
       html,
