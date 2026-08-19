@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const { engine } = require('express-handlebars');
+const fs = require('fs');
 
 // Cargar variables de entorno según el ambiente
 require('dotenv').config({
@@ -36,6 +37,12 @@ app.engine('hbs', engine({
 }));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
+
+// Asegura que la carpeta de uploads exista siempre al arrancar
+const uploadsDir = path.join(__dirname, 'public/uploads');
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir, { recursive: true });
+}
 
 // Middlewares
 app.use(express.urlencoded({ extended: true }));
