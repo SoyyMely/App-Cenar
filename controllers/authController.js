@@ -108,10 +108,10 @@ exports.registrarClienteDelivery = async (req, res) => {
 
   await enviarCorreo({
   to: correo,
-  subject: 'Activa tu cuenta en AppCenar',
+  subject: 'Activa tu cuenta en Cenar',
   html: emailTemplate({
     titulo: `¡Hola, ${nombre}!`,
-    mensaje: 'Gracias por registrarte en AppCenar. Para empezar a pedir de tus restaurantes favoritos, activa tu cuenta haciendo clic en el siguiente botón. Este enlace expira en 24 horas.',
+    mensaje: 'Gracias por registrarte en Cenar. Para empezar a pedir de tus restaurantes favoritos, activa tu cuenta haciendo clic en el siguiente botón. Este enlace expira en 24 horas.',
     botonTexto: 'Activar mi cuenta',
     botonUrl: `${process.env.BASE_URL}/activar/${tokenActivacion}`
   })

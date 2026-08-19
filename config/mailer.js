@@ -8,7 +8,8 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 const enviarCorreo = async ({ to, subject, html, text, attachments }) => {
   if (!to || !subject || !html) {
-    throw new Error('Faltan campos obligatorios: to, subject y html son requeridos');
+    console.error('❌ Faltan campos obligatorios para enviar correo: to, subject y html son requeridos');
+    return null;
   }
 
   try {
@@ -23,15 +24,14 @@ const enviarCorreo = async ({ to, subject, html, text, attachments }) => {
 
     if (error) {
       console.error(`❌ Error al enviar correo a ${to}:`, error.message || error);
-      throw new Error(error.message || 'Error al enviar correo');
+      return null;
     }
 
     console.log(`📧 Correo enviado a ${to} — ID: ${data.id}`);
-
     return data;
   } catch (error) {
     console.error(`❌ Error al enviar correo a ${to}:`, error.message);
-    throw error;
+    return null;
   }
 };
 
