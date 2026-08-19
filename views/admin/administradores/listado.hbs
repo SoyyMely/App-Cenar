@@ -1,0 +1,41 @@
+<div class="container mt-3">
+  <div class="cenar-header">
+  <div class="cenar-logo-icon">
+    <img src="/img/cenar-logo-blanco.svg" style="width:22px;height:22px;">
+  </div>
+  <span class="cenar-logo-text">cenar</span>
+</div>
+  <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2"><nav class="nav nav-pills"><a href="/admin" class="nav-link d-inline-block ">Dashboard</a><a href="/admin/clientes" class="nav-link d-inline-block ">Clientes</a><a href="/admin/delivery" class="nav-link d-inline-block ">Delivery</a><a href="/admin/comercios" class="nav-link d-inline-block ">Comercios</a><a href="/admin/tipos-comercio" class="nav-link d-inline-block ">Tipos de comercio</a><a href="/admin/configuracion" class="nav-link d-inline-block ">Configuración</a><a href="/admin/administradores" class="nav-link d-inline-block active">Administradores</a></nav><a href="/logout" class="btn btn-sm btn-outline-danger">Cerrar sesión</a></div>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="mb-0">Administradores</h4>
+    <a href="/admin/administradores/crear" class="btn btn-primary btn-sm">+ Nuevo administrador</a>
+  </div>
+
+  <table class="table">
+    <thead><tr><th>Nombre</th><th>Apellido</th><th>Usuario</th><th>Cédula</th><th>Correo</th><th>Estado</th><th></th></tr></thead>
+    <tbody>
+      {{#each administradores}}
+        <tr>
+          <td>{{this.nombre}}</td>
+          <td>{{this.apellido}}</td>
+          <td>{{this.usuario}}</td>
+          <td>{{this.cedula}}</td>
+          <td>{{this.correo}}</td>
+          <td>{{#if this.activo}}<span class="badge bg-success">Activo</span>{{else}}<span class="badge bg-secondary">Inactivo</span>{{/if}}</td>
+          <td>
+            {{#unless this.esUsuarioActual}}
+              <a href="/admin/administradores/{{this._id}}/editar" class="btn btn-sm btn-outline-primary">Editar</a>
+              <a href="/admin/administradores/{{this._id}}/cambiar-estado" class="btn btn-sm btn-outline-secondary">{{#if this.activo}}Inactivar{{else}}Activar{{/if}}</a>
+            {{else}}
+              <span class="text-muted small">(Tu usuario)</span>
+            {{/unless}}
+          </td>
+        </tr>
+      {{else}}
+        <tr><td colspan="7">No hay administradores registrados.</td></tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <a href="/admin" class="btn btn-secondary">Volver al dashboard</a>
+</div>

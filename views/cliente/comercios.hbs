@@ -1,0 +1,33 @@
+<div class="container mt-3" style="max-width: 700px;">
+  <div class="cenar-header">
+  <div class="cenar-logo-icon">
+    <img src="/img/cenar-logo-blanco.svg" style="width:22px;height:22px;">
+  </div>
+  <span class="cenar-logo-text">cenar</span>
+</div>
+  <a href="/cliente" class="small d-block mb-2"><i class="ti ti-arrow-left"></i> Volver</a>
+  <form method="GET" action="/cliente/tipos/{{tipoId}}/comercios" class="d-flex gap-2 mb-3">
+    <input type="text" name="buscar" class="form-control" placeholder="Buscar..." value="{{buscar}}">
+    <button type="submit" class="btn btn-primary">Buscar</button>
+  </form>
+
+  <p class="fw-bold">{{cantidad}} comercio(s)</p>
+
+  {{#each comercios}}
+    <div class="card mb-2 p-3 d-flex flex-row justify-content-between align-items-center">
+      <a href="/cliente/comercios/{{this._id}}/catalogo" class="text-decoration-none text-dark d-flex align-items-center gap-3 flex-grow-1">
+        <img src="{{this.foto}}" style="width:50px;height:50px;object-fit:cover;border-radius:50%;">
+        <span>{{this.nombreComercio}}</span>
+      </a>
+      <form method="POST" action="/cliente/comercios/{{this._id}}/favorito">
+        <button type="submit" class="btn btn-sm {{#if this.esFavorito}}btn-danger{{else}}btn-outline-danger{{/if}}">
+          {{#if this.esFavorito}}♥{{else}}♡{{/if}}
+        </button>
+      </form>
+    </div>
+  {{else}}
+    <p>No hay comercios de este tipo por ahora.</p>
+  {{/each}}
+
+  <a href="/cliente" class="btn btn-secondary mt-3">Volver</a>
+</div>

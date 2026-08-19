@@ -1,0 +1,24 @@
+<div class="container mt-3" style="max-width: 600px;">
+  <div class="cenar-header">
+  <div class="cenar-logo-icon">
+    <img src="/img/cenar-logo-blanco.svg" style="width:22px;height:22px;">
+  </div>
+  <span class="cenar-logo-text">cenar</span>
+</div>
+  <div class="text-center mb-4">
+    <h3>{{pedido.comercio.nombreComercio}}</h3>
+    <span class="badge {{#if (eq pedido.estado 'pendiente')}}bg-warning{{else if (eq pedido.estado 'en_proceso')}}bg-info{{else}}bg-success{{/if}}">{{pedido.estado}}</span>
+  </div>
+
+  <div class="card p-3">
+    <h5>Tu pedido</h5>
+    {{#each pedido.productos}}
+      <div class="d-flex justify-content-between border-bottom py-2">
+        <span>{{this.nombre}}</span><span>RD$ {{this.precio}}</span>
+      </div>
+    {{/each}}
+    <div class="d-flex justify-content-between fw-bold pt-2"><span>Total</span><span>RD$ {{pedido.total}}</span></div>
+  </div>
+
+  <a href="/cliente/pedidos" class="btn btn-secondary w-100 mt-3">Volver</a>
+</div>

@@ -1,0 +1,8 @@
+<div class="container mt-3 text-center" style="max-width:500px;">
+  <h4 class="mb-4">¿Está seguro?</h4>
+  <p>¿Está seguro que desea {{#if administrador.activo}}inactivar{{else}}activar{{/if}} al administrador <strong>{{administrador.nombre}} {{administrador.apellido}}</strong>?</p>
+  <form method="POST" action="/admin/administradores/{{administrador._id}}/cambiar-estado" class="d-flex gap-2 justify-content-center">
+    <a href="/admin/administradores" class="btn btn-secondary">Cancelar</a>
+    <button type="submit" class="btn btn-danger">Aceptar</button>
+  </form>
+</div>

@@ -1,0 +1,71 @@
+<div class="container mt-3">
+  <div class="cenar-header">
+  <div class="cenar-logo-icon">
+    <img src="/img/cenar-logo-blanco.svg" style="width:22px;height:22px;">
+  </div>
+  <span class="cenar-logo-text">cenar</span>
+</div>
+  <a href="javascript:history.back();" class="small d-block mb-2"><i class="ti ti-arrow-left"></i> Volver al listado</a>
+  <h3>{{comercio.nombreComercio}}</h3>
+
+  <div class="row mt-3">
+    <div class="col-md-8">
+      {{#each categoriasConProductos}}
+        <h5 class="mt-3">{{this.nombre}}</h5>
+        <div class="row">
+          {{#each this.productos}}
+            <div class="col-md-6 mb-3">
+              <div class="card p-2 d-flex flex-row gap-2">
+                <img src="{{this.foto}}" style="width:80px;height:80px;object-fit:cover;">
+                <div class="flex-grow-1">
+                  <strong>{{this.nombre}}</strong>
+                  <p class="small text-muted mb-1">{{this.descripcion}}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span>RD$ {{this.precio}}</span>
+                    {{#if this.enCarrito}}
+                      <span class="badge bg-success">Agregado</span>
+                    {{else}}
+                      <form method="POST" action="/cliente/comercios/{{../../comercio._id}}/catalogo/{{this._id}}/agregar">
+                        <button type="submit" class="btn btn-sm btn-primary">Agregar</button>
+                      </form>
+                    {{/if}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      {{else}}
+        <p>Este comercio aún no tiene productos.</p>
+      {{/each}}
+    </div>
+
+    <div class="col-md-4">
+      <div class="card p-3">
+        <h5>Mi pedido</h5>
+        {{#each carrito}}
+          <div class="d-flex justify-content-between align-items-center border-bottom py-2">
+            <span class="small">{{this.nombre}}</span>
+            <div class="d-flex align-items-center gap-2">
+              <span>RD$ {{this.precio}}</span>
+              <form method="POST" action="/cliente/comercios/{{../comercio._id}}/catalogo/{{this.producto}}/quitar">
+                <button type="submit" class="btn btn-sm btn-outline-danger">Eliminar</button>
+              </form>
+            </div>
+          </div>
+        {{else}}
+          <p class="text-muted text-center mt-3">Tu pedido está vacío</p>
+        {{/each}}
+
+        {{#if carrito.length}}
+          <div class="d-flex justify-content-between fw-bold pt-2">
+            <span>Subtotal</span><span>RD$ {{subtotal}}</span>
+          </div>
+          <a href="/cliente/comercios/{{comercio._id}}/checkout" class="btn btn-primary w-100 mt-2">Continuar</a>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+
+  <a href="/cliente" class="btn btn-secondary mt-3">Volver al listado de comercios</a>
+</div>

@@ -1,0 +1,34 @@
+<div class="container mt-3">
+  <div class="cenar-header">
+  <div class="cenar-logo-icon">
+    <img src="/img/cenar-logo-blanco.svg" style="width:22px;height:22px;">
+  </div>
+  <span class="cenar-logo-text">cenar</span>
+</div>
+  <div class="settings-shell">
+    <div class="card">
+      <h5 class="mb-3">Editar producto</h5>
+      {{#if errores}}
+        <div class="alert alert-danger"><ul class="mb-0">{{#each errores}}<li>{{this.msg}}</li>{{/each}}</ul></div>
+      {{/if}}
+      <img src="{{producto.foto}}" style="height:90px;" class="mb-3 d-block">
+      <form method="POST" action="/comercio/productos/{{producto._id}}/editar" enctype="multipart/form-data">
+        <div class="row g-3">
+          <div class="col-md-6"><label class="form-label">Nombre</label><input type="text" name="nombre" class="form-control" value="{{producto.nombre}}" required></div>
+          <div class="col-md-6"><label class="form-label">Categoría</label>
+            <select name="categoria" class="form-select" required>
+              {{#each categorias}}<option value="{{this._id}}" {{#if this.seleccionada}}selected{{/if}}>{{this.nombre}}</option>{{/each}}
+            </select>
+          </div>
+          <div class="col-md-8"><label class="form-label">Descripción</label><input type="text" name="descripcion" class="form-control" value="{{producto.descripcion}}" required></div>
+          <div class="col-md-4"><label class="form-label">Precio</label><input type="number" step="0.01" name="precio" class="form-control" value="{{producto.precio}}" required></div>
+          <div class="col-md-6"><label class="form-label">Foto (dejar vacío para no cambiar)</label><input type="file" name="foto" class="form-control" accept="image/*"></div>
+        </div>
+        <div class="d-flex gap-2 mt-4">
+          <a href="/comercio/productos" class="btn btn-outline-secondary">Volver</a>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

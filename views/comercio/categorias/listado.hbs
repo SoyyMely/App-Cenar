@@ -1,0 +1,27 @@
+<div class="container mt-3">
+  <div class="cenar-header">
+  <div class="cenar-logo-icon">
+    <img src="/img/cenar-logo-blanco.svg" style="width:22px;height:22px;">
+  </div>
+  <span class="cenar-logo-text">cenar</span>
+</div>
+  <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2"><div><a href="/comercio" class="btn btn-sm btn-outline-secondary me-1">Pedidos</a><a href="/comercio/categorias" class="btn btn-sm btn-primary me-1">Categorías</a><a href="/comercio/productos" class="btn btn-sm btn-outline-secondary me-1">Productos</a><a href="/comercio/perfil" class="btn btn-sm btn-outline-secondary me-1">Mi perfil</a></div><a href="/logout" class="btn btn-sm btn-outline-danger">Cerrar sesión</a></div>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="mb-0">Mis categorías</h4>
+    <a href="/comercio/categorias/crear" class="btn btn-primary btn-sm">+ Nueva categoría</a>
+  </div>
+
+  {{#each categorias}}
+    <div class="card mb-2 p-3 d-flex flex-row justify-content-between align-items-center">
+      <div><strong>{{this.nombre}}</strong> — {{this.descripcion}}<div class="text-muted small">{{this.cantidadProductos}} producto(s)</div></div>
+      <div>
+        <a href="/comercio/categorias/{{this._id}}/editar" class="btn btn-sm btn-outline-primary">Editar</a>
+        <a href="/comercio/categorias/{{this._id}}/eliminar" class="btn btn-sm btn-outline-danger">Eliminar</a>
+      </div>
+    </div>
+  {{else}}
+    <p>No tienes categorías creadas.</p>
+  {{/each}}
+
+  <a href="/comercio" class="btn btn-secondary mt-3">Volver</a>
+</div>

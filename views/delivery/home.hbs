@@ -1,0 +1,25 @@
+<div class="container mt-3">
+  <div class="cenar-header">
+  <div class="cenar-logo-icon">
+    <img src="/img/cenar-logo-blanco.svg" style="width:22px;height:22px;">
+  </div>
+  <span class="cenar-logo-text">cenar</span>
+</div>
+  <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2"><div><a href="/delivery" class="btn btn-sm btn-primary me-1">Mis entregas</a><a href="/delivery/perfil" class="btn btn-sm btn-outline-secondary me-1">Mi perfil</a></div><a href="/logout" class="btn btn-sm btn-outline-danger">Cerrar sesión</a></div>
+  <h4 class="mb-3">Mis entregas</h4>
+
+  {{#each pedidos}}
+    <a href="/delivery/pedidos/{{this._id}}" class="text-decoration-none text-dark">
+      <div class="card mb-2 p-3 d-flex flex-row align-items-center gap-3">
+        <img src="{{this.comercio.foto}}" style="width:50px;height:50px;object-fit:cover;border-radius:50%;">
+        <div>
+          <span class="badge {{#if (eq this.estado 'pendiente')}}bg-warning{{else if (eq this.estado 'en_proceso')}}bg-info{{else}}bg-success{{/if}}">{{this.estado}}</span>
+          <div><strong>{{this.comercio.nombreComercio}}</strong></div>
+          <div class="text-muted small">RD$ {{this.total}} · {{this.productos.length}} productos</div>
+        </div>
+      </div>
+    </a>
+  {{else}}
+    <p>No tienes entregas asignadas todavía.</p>
+  {{/each}}
+</div>

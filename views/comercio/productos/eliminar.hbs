@@ -1,0 +1,8 @@
+<div class="container mt-3 text-center" style="max-width:500px;">
+  <h4 class="mb-4 text-danger">¿Está seguro?</h4>
+  <p>¿Está seguro que desea eliminar el producto <strong>{{producto.nombre}}</strong>?</p>
+  <form method="POST" action="/comercio/productos/{{producto._id}}/eliminar" class="d-flex gap-2 justify-content-center">
+    <a href="/comercio/productos" class="btn btn-secondary">Cancelar</a>
+    <button type="submit" class="btn btn-danger">Aceptar</button>
+  </form>
+</div>

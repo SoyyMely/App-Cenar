@@ -1,0 +1,50 @@
+<div class="container mt-3">
+  <div class="cenar-header">
+  <div class="cenar-logo-icon">
+    <img src="/img/cenar-logo-blanco.svg" style="width:22px;height:22px;">
+  </div>
+  <span class="cenar-logo-text">cenar</span>
+</div>
+  <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2"><nav class="nav nav-pills"><a href="/admin" class="nav-link d-inline-block active">Dashboard</a><a href="/admin/clientes" class="nav-link d-inline-block ">Clientes</a><a href="/admin/delivery" class="nav-link d-inline-block ">Delivery</a><a href="/admin/comercios" class="nav-link d-inline-block ">Comercios</a><a href="/admin/tipos-comercio" class="nav-link d-inline-block ">Tipos de comercio</a><a href="/admin/configuracion" class="nav-link d-inline-block ">Configuración</a><a href="/admin/administradores" class="nav-link d-inline-block ">Administradores</a></nav><a href="/logout" class="btn btn-sm btn-outline-danger">Cerrar sesión</a></div>
+
+ <div class="row g-3">
+  <div class="col-md-3 col-6">
+    <div class="card p-3 text-center h-100">
+      <i class="ti ti-shopping-cart" style="font-size:26px;color:var(--brand);"></i>
+      <div class="text-muted small mt-2">Pedidos totales</div>
+      <div class="fs-3 fw-bold">{{indicadores.pedidosTotales}}</div>
+      <div class="text-muted small">{{indicadores.pedidosHoy}} hoy</div>
+    </div>
+  </div>
+  <div class="col-md-3 col-6">
+    <div class="card p-3 text-center h-100">
+      <i class="ti ti-building-store" style="font-size:26px;color:var(--brand);"></i>
+      <div class="text-muted small mt-2">Comercios</div>
+      <div class="fs-3 fw-bold">{{indicadores.comerciosActivos}} activos</div>
+      <div class="text-muted small">{{indicadores.comerciosInactivos}} inactivos</div>
+    </div>
+  </div>
+  <div class="col-md-3 col-6">
+    <div class="card p-3 text-center h-100">
+      <i class="ti ti-users" style="font-size:26px;color:var(--brand);"></i>
+      <div class="text-muted small mt-2">Clientes</div>
+      <div class="fs-3 fw-bold">{{indicadores.clientesActivos}} activos</div>
+      <div class="text-muted small">{{indicadores.clientesInactivos}} inactivos</div>
+    </div>
+  </div>
+  <div class="col-md-3 col-6">
+    <div class="card p-3 text-center h-100">
+      <i class="ti ti-motorbike" style="font-size:26px;color:var(--brand);"></i>
+      <div class="text-muted small mt-2">Delivery</div>
+      <div class="fs-3 fw-bold">{{indicadores.deliveryActivos}} activos</div>
+      <div class="text-muted small">{{indicadores.deliveryInactivos}} inactivos</div>
+    </div>
+  </div>
+  <div class="col-md-3 col-6">
+    <div class="card p-3 text-center h-100">
+      <i class="ti ti-package" style="font-size:26px;color:var(--brand);"></i>
+      <div class="text-muted small mt-2">Productos creados</div>
+      <div class="fs-3 fw-bold">{{indicadores.productosCreados}}</div>
+    </div>
+  </div>
+</div>

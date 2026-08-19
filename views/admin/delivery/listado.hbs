@@ -1,0 +1,35 @@
+<div class="container mt-3">
+  <div class="cenar-header">
+  <div class="cenar-logo-icon">
+    <img src="/img/cenar-logo-blanco.svg" style="width:22px;height:22px;">
+  </div>
+  <span class="cenar-logo-text">cenar</span>
+</div>
+  <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2"><nav class="nav nav-pills"><a href="/admin" class="nav-link d-inline-block ">Dashboard</a><a href="/admin/clientes" class="nav-link d-inline-block ">Clientes</a><a href="/admin/delivery" class="nav-link d-inline-block active">Delivery</a><a href="/admin/comercios" class="nav-link d-inline-block ">Comercios</a><a href="/admin/tipos-comercio" class="nav-link d-inline-block ">Tipos de comercio</a><a href="/admin/configuracion" class="nav-link d-inline-block ">Configuración</a><a href="/admin/administradores" class="nav-link d-inline-block ">Administradores</a></nav><a href="/logout" class="btn btn-sm btn-outline-danger">Cerrar sesión</a></div>
+  <h4 class="mb-3">Delivery</h4>
+  <table class="table">
+    <thead><tr><th>Nombre</th><th>Apellido</th><th>Entregas</th><th>Teléfono</th><th>Correo</th><th>Estado</th><th></th></tr></thead>
+    <tbody>
+      {{#each deliveries}}
+        <tr>
+          <td>{{this.nombre}}</td><td>{{this.apellido}}</td><td>{{this.cantidadEntregas}}</td><td>{{this.telefono}}</td><td>{{this.correo}}</td>
+          <td>
+            {{#if this.activo}}<span class="badge bg-success">Activo</span>{{else}}<span class="badge bg-secondary">Inactivo</span>{{/if}}
+          </td>
+          <td>
+            <form method="POST" action="/admin/delivery/{{this._id}}/cambiar-estado">
+              {{#if this.activo}}
+                <button type="submit" class="btn btn-sm btn-outline-danger">Inactivar</button>
+              {{else}}
+                <button type="submit" class="btn btn-sm btn-outline-success">Activar</button>
+              {{/if}}
+            </form>
+          </td>
+        </tr>
+      {{else}}
+        <tr><td colspan="7">No hay registros.</td></tr>
+      {{/each}}
+    </tbody>
+  </table>
+  <a href="/admin" class="btn btn-secondary">Volver al dashboard</a>
+</div>

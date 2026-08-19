@@ -1,0 +1,34 @@
+<div class="container mt-3">
+  <div class="cenar-header">
+  <div class="cenar-logo-icon">
+    <img src="/img/cenar-logo-blanco.svg" style="width:22px;height:22px;">
+  </div>
+  <span class="cenar-logo-text">cenar</span>
+</div>
+  <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2"><nav class="nav nav-pills"><a href="/admin" class="nav-link d-inline-block ">Dashboard</a><a href="/admin/clientes" class="nav-link d-inline-block ">Clientes</a><a href="/admin/delivery" class="nav-link d-inline-block ">Delivery</a><a href="/admin/comercios" class="nav-link d-inline-block ">Comercios</a><a href="/admin/tipos-comercio" class="nav-link d-inline-block active">Tipos de comercio</a><a href="/admin/configuracion" class="nav-link d-inline-block ">Configuración</a><a href="/admin/administradores" class="nav-link d-inline-block ">Administradores</a></nav><a href="/logout" class="btn btn-sm btn-outline-danger">Cerrar sesión</a></div>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="mb-0">Tipos de comercio</h4>
+    <a href="/admin/tipos-comercio/crear" class="btn btn-primary btn-sm">+ Nuevo tipo</a>
+  </div>
+
+  <div class="row">
+    {{#each tipos}}
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <img src="{{this.icono}}" class="card-img-top" style="height:150px; object-fit:contain;">
+          <div class="card-body">
+            <h5 class="card-title">{{this.nombre}}</h5>
+            <p class="card-text">{{this.descripcion}}</p>
+            <p class="text-muted small">{{this.cantidadComercios}} comercio(s)</p>
+            <a href="/admin/tipos-comercio/{{this._id}}/editar" class="btn btn-sm btn-outline-primary">Editar</a>
+            <a href="/admin/tipos-comercio/{{this._id}}/eliminar" class="btn btn-sm btn-outline-danger">Eliminar</a>
+          </div>
+        </div>
+      </div>
+    {{else}}
+      <p>No hay tipos de comercio creados todavía.</p>
+    {{/each}}
+  </div>
+
+  <a href="/admin" class="btn btn-secondary mt-3">Volver al dashboard</a>
+</div>
