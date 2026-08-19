@@ -113,7 +113,7 @@ exports.registrarClienteDelivery = async (req, res) => {
     titulo: `¡Hola, ${nombre}!`,
     mensaje: 'Gracias por registrarte en Cenar. Para empezar a pedir de tus restaurantes favoritos, activa tu cuenta haciendo clic en el siguiente botón. Este enlace expira en 24 horas.',
     botonTexto: 'Activar mi cuenta',
-    botonUrl: `${process.env.BASE_URL}/activar/${tokenActivacion}`
+    botonUrl: `${process.env.BSE_URL}/activar/${tokenActivacion}`
   })
 });
 
