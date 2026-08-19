@@ -171,8 +171,7 @@ Abre `http://localhost:8080` en el navegador.
 ---
 
 ## 👨‍💻 Autor
+
 - Lismel Gómez - SoyyMely
 
-- Nombre Apellido — [usuario de GitHub]
-
-Proyecto final — ITLA, 2025
+Proyecto final — ITLA, 2026
