@@ -1,6 +1,6 @@
 # 🛵 Cenar (AppCenar)
 
-Aplicación web de pedidos a domicilio desarrollada con **Node.js + Express** siguiendo el patrón de arquitectura **MVC**, con persistencia en **MongoDB** mediante **Mongoose**.
+Aplicación web de pedidos a domicilio desarrollada con **Node.js + Express** siguiendo el patrón de arquitectura **MVC**, con persistencia en **MongoDB** mediante **Mongoose**
 
 Permite a los usuarios pedir comida y productos a comercios locales, con cuatro roles distintos: **Cliente**, **Comercio**, **Delivery** y **Administrador**.
 
