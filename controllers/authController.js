@@ -189,10 +189,15 @@ exports.registrarComercio = async (req, res) => {
   await nuevoComercio.save();
 
   await enviarCorreo({
-    to: correo,
-    subject: 'Activa tu comercio en AppCenar',
-    html: `<p>Hola ${nombreComercio}, haz click <a href="${process.env.BASE_URL}/activar/${tokenActivacion}">aquí</a> para activar tu cuenta.</p>`
-  });
+  to: correo,
+  subject: 'Activa tu comercio en Cenar',
+  html: emailTemplate({
+    titulo: `¡Hola, ${nombreComercio}!`,
+    mensaje: 'Gracias por registrarte en Cenar. Para empezar a vender en Cenar, activa tu comercio haciendo clic en el siguiente botón. Este enlace expira en 24 horas.',
+    botonTexto: 'Activar mi comercio',
+    botonUrl: `${process.env.BASE_URL}/activar/${tokenActivacion}`
+  })
+});
 
   res.render('auth/registroExitoso', { titulo: 'Registro exitoso' });
 };
@@ -240,10 +245,15 @@ exports.enviarTokenReset = async (req, res) => {
   await usuario.save();
 
   await enviarCorreo({
-    to: usuario.correo,
-    subject: 'Restablece tu contraseña - AppCenar',
-    html: `<p>Haz click <a href="${process.env.BASE_URL}/reset-password/${tokenReset}">aquí</a> para cambiar tu contraseña. Este enlace expira en 1 hora.</p>`
-  });
+    to: correo,
+    subject: 'Restablece tu contraseña',
+    html: emailTemplate({
+    titulo: `¡Hola!`,
+    mensaje: 'Has solicitado restablecer tu contraseña en Cenar. Haz clic en el siguiente botón para establecer una nueva contraseña. Este enlace expira en 1 hora.',
+    botonTexto: 'Restablecer contraseña',
+    botonUrl: `${process.env.BASE_URL}/reset-password/${tokenReset}`
+  })
+});
 
   res.render('auth/olvidoPasswordExitoso', { titulo: 'Correo enviado' });
 };
