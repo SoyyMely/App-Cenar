@@ -163,13 +163,6 @@ Abre `http://localhost:8080` en el navegador.
 
 ---
 
-## ⚠️ Limitaciones conocidas
-
-- **Archivos subidos (Multer):** Railway usa almacenamiento efímero, por lo que las imágenes subidas se pierden en cada redeploy. Para producción robusta se recomendaría integrar un servicio como Cloudinary.
-- **Envío de correos (Resend):** mientras no se verifique un dominio propio, el plan gratuito de Resend solo permite enviar correos a la dirección registrada en la cuenta.
-
----
-
 ## 👨‍💻 Autor
 
 - Lismel Gómez - SoyyMely
