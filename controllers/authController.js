@@ -99,7 +99,7 @@ exports.registrarClienteDelivery = async (req, res) => {
     correo,
     usuario,
     password,
-    foto: req.file ? `/uploads/${req.file.filename}` : null,
+    foto: req.file ? req.file.path : null,
     activo: false,
     tokenActivacion
   });
@@ -181,7 +181,7 @@ exports.registrarComercio = async (req, res) => {
     horaCierre,
     tipoComercio,
     password,
-    foto: req.file ? `/uploads/${req.file.filename}` : null,
+    foto: req.file ? req.file.path : null,
     activo: false,
     tokenActivacion
   });

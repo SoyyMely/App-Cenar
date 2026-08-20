@@ -219,7 +219,7 @@ exports.actualizarPerfil = async (req, res) => {
   cliente.apellido = apellido;
   cliente.telefono = telefono;
   if (req.file) {
-    cliente.foto = `/uploads/${req.file.filename}`;
+    cliente.foto = req.file.path;
   }
   await cliente.save();
 

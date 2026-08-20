@@ -1,19 +1,19 @@
 const multer = require('multer');
-const path = require('path');
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const cloudinary = require('./cloudinary');
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, '../public/uploads'));
-  },
-  filename: (req, file, cb) => {
-    const nombreUnico = Date.now() + '-' + Math.round(Math.random() * 1e9) + path.extname(file.originalname);
-    cb(null, nombreUnico);
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: 'appcenar', // carpeta dentro de tu cuenta de Cloudinary
+    allowed_formats: ['jpg', 'jpeg', 'png', 'webp'],
+    transformation: [{ width: 800, height: 800, crop: 'limit' }] // opcional: limita tamaño máximo
   }
 });
 
 const filtroArchivo = (req, file, cb) => {
   const tiposPermitidos = /jpeg|jpg|png|webp/;
-  const extensionValida = tiposPermitidos.test(path.extname(file.originalname).toLowerCase());
+  const extensionValida = tiposPermitidos.test(file.originalname.split('.').pop().toLowerCase());
   const mimeValido = tiposPermitidos.test(file.mimetype);
 
   if (extensionValida && mimeValido) {

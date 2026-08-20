@@ -85,7 +85,7 @@ exports.actualizarPerfil = async (req, res) => {
   comercio.telefono = telefono;
   comercio.correo = correo;
   if (req.file) {
-    comercio.foto = `/uploads/${req.file.filename}`;
+    comercio.foto = req.file.path;
   }
   await comercio.save();
 
@@ -206,7 +206,7 @@ exports.crearProducto = async (req, res) => {
     precio,
     categoria,
     comercio: req.session.usuario.id,
-    foto: `/uploads/${req.file.filename}`
+    foto: req.file.path
   });
 
   res.redirect('/comercio/productos');
@@ -246,7 +246,7 @@ exports.editarProducto = async (req, res) => {
   producto.precio = precio;
   producto.categoria = categoria;
   if (req.file) {
-    producto.foto = `/uploads/${req.file.filename}`;
+    producto.foto = req.file.path;
   }
   await producto.save();
 

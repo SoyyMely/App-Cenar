@@ -40,7 +40,7 @@ exports.crearTipoComercio = async (req, res) => {
   await TipoComercio.create({
     nombre,
     descripcion,
-    icono: `/uploads/${req.file.filename}`
+    icono: req.file.path
   });
 
   res.redirect('/admin/tipos-comercio');
@@ -71,7 +71,7 @@ exports.editarTipoComercio = async (req, res) => {
   tipo.nombre = nombre;
   tipo.descripcion = descripcion;
   if (req.file) {
-    tipo.icono = `/uploads/${req.file.filename}`;
+    tipo.icono = req.file.path;
   }
   await tipo.save();
 

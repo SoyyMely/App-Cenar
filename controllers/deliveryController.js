@@ -68,7 +68,7 @@ exports.actualizarPerfil = async (req, res) => {
   delivery.apellido = apellido;
   delivery.telefono = telefono;
   if (req.file) {
-    delivery.foto = `/uploads/${req.file.filename}`;
+    delivery.foto = req.file.path;
   }
   await delivery.save();
 
