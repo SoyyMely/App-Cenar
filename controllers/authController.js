@@ -244,11 +244,11 @@ exports.enviarTokenReset = async (req, res) => {
   usuario.tokenResetExpira = Date.now() + 1000 * 60 * 60; // 1 hora
   await usuario.save();
 
-  await enviarCorreo({
-    to: correo,
-    subject: 'Restablece tu contraseña',
-    html: emailTemplate({
-    titulo: `¡Hola!`,
+ await enviarCorreo({
+  to: usuario.correo,   
+  subject: 'Restablece tu contraseña',
+  html: emailTemplate({
+    titulo: `¡Hola, ${usuario.nombre || usuario.nombreComercio}!`,
     mensaje: 'Has solicitado restablecer tu contraseña en Cenar. Haz clic en el siguiente botón para establecer una nueva contraseña. Este enlace expira en 1 hora.',
     botonTexto: 'Restablecer contraseña',
     botonUrl: `${process.env.BASE_URL}/reset-password/${tokenReset}`
